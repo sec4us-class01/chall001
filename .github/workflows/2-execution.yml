@@ -33,6 +33,8 @@ jobs:
             require('fs').writeFileSync(`${process.env.GITHUB_WORKSPACE}/package.zip`, Buffer.from(download.data));
 
       - name: Prepare and Execute
+        env: 
+          TEST: ${{ secrets.TEST }}
         shell: powershell
         run: |
           Remove-Item -Recurse -Force not_exploitable
